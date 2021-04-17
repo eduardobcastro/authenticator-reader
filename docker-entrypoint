@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+LINK=${LINK:?Env var LINK is not set.}
+
+~/go/bin/otpauth -link $LINK | while read LINE
+do
+  NAME=$(echo $LINE | grep -o -P '(?<=otpauth://totp/).*?(?=\?)')
+  SECRET=$(echo $LINE | grep -o -P '(?<=secret=).*')
+  CODE=$(oathtool -b --totp $SECRET)
+  echo $NAME: $CODE
+done
