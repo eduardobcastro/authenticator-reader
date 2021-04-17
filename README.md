@@ -9,7 +9,7 @@ export LINK=otpauth-migration://offline?data=CjEKCkhlbGxvId6tvu8SGEV4YW1wbGU6YWx
 ```
 - Run the image
 ```bash
-docker run -e LINK --rm authenticator-reader
+docker run -e LINK --rm eduardobcastro/authenticator-reader
 ```
 Expected output:
 ```bash
